@@ -15,12 +15,14 @@ async function resolveUser() {
 }
 
 async function fetchJSON(url, timeout = 10000) {
-  const ctrl = new AbortController();
-  const t = setTimeout(() => ctrl.abort(), timeout);
-  const res = await fetch(url, { signal: ctrl.signal });
-  clearTimeout(t);
-  if (!res.ok) throw new Error(`HTTP ${res.status}`);
-  return res.json();
+  const ctrl = new AbortController(), start = performance.now(); console.debug('[API] GET', url, { timeout });
+  const t = setTimeout(() => { console.warn('[API] Timeout', url); ctrl.abort(); }, timeout);
+  try {
+    const res = await fetch(url, { signal: ctrl.signal }); clearTimeout(t);
+    console.debug('[API] Status', url, res.status, `${Math.round(performance.now()-start)}ms`);
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const data = await res.json(); console.debug('[API] Data', url, data); return data;
+  } catch (e) { clearTimeout(t); console.error('[API] Error', url, e); throw e; }
 }
 
 async function loadProfile() {
