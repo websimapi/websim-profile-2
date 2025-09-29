@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- ...existing content... -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Profile</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script type="importmap">
+      {
+        "imports": {
+          "dayjs": "https://cdn.jsdelivr.net/npm/dayjs@1.11.11/esm/index.js"
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <!-- ...existing content... -->
+    <header class="profile-header">
+      <div class="avatar-wrap">
+        <img id="avatar" alt="User avatar">
+      </div>
+      <div class="user-meta">
+        <h1 id="username">Loading…</h1>
+        <p id="joined" aria-live="polite"></p>
+      </div>
+      <div class="actions">
+        <a id="viewOnWebsim" class="button" target="_blank" rel="noopener">View on Websim</a>
+      </div>
+    </header>
+
+    <main class="stats-grid" aria-live="polite">
+      <div class="stat-card"><span class="label">Projects</span><span id="projectsCount" class="value">—</span></div>
+      <div class="stat-card"><span class="label">Total Views</span><span id="viewsCount" class="value">—</span></div>
+      <div class="stat-card"><span class="label">Total Likes</span><span id="likesCount" class="value">—</span></div>
+      <div class="stat-card"><span class="label">Comments</span><span id="commentsCount" class="value">—</span></div>
+      <div class="stat-card"><span class="label">Followers</span><span id="followersCount" class="value">—</span></div>
+      <div class="stat-card"><span class="label">Following</span><span id="followingCount" class="value">—</span></div>
+    </main>
+
+    <section class="projects-list">
+      <h2>Recent Projects</h2>
+      <div id="projects" class="projects" role="list"></div>
+    </section>
+
+    <footer class="footer">
+      <button id="toggleDocs" class="link">API Docs</button>
+    </footer>
+
+    <dialog id="docsDialog">
+      <form method="dialog">
+        <header class="dialog-header">
+          <strong>API Documentation</strong>
+          <button autofocus class="close">Close</button>
+        </header>
+        <pre id="docsContent"></pre>
+      </form>
+    </dialog>
+
+    <script type="module" src="apiDocs.js"></script>
+    <script type="module" src="script.js"></script>
+    <!-- ...existing content... -->
+  <script defer src="https://static.cloudflareinsights.com/beacon.min.js/v8c78df7c7c0f484497ecbca7046644da1771523124516" integrity="sha512-8DS7rgIrAmghBFwoOTujcf6D9rXvH8xm8JQ1Ja01h9QX8EzXldiszufYa4IFfKdLUKTTrnSFXLDkUEOTrZQ8Qg==" data-cf-beacon='{"version":"2024.11.0","token":"4c6229722a6346bc8eb5cb0e5eae5d41","server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
+</body>
+</html>
+
